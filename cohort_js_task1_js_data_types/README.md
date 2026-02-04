@@ -108,6 +108,8 @@ HTML keeps loading, Script runs after DOM is ready and Faster, smoother load.
 
 4. Try: let age = prompt(“Enter age:”); console.log(age + 5); observe what happens.
 
+**Ans** When ever you write any value like string, number or character in "prompt" modal it give only in string, Ex: I gave 22 in prompt and log out "age + 5", it gives me '225' in string.
+
 ## Working with Strings
 
 1. let msg = “I love Sheryians”;

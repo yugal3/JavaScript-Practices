@@ -38,6 +38,10 @@ console.log("Connected!");
 
 // console.log(typeof userName);
 
+let age = prompt("Enter Your Age");
+
+console.log(age + 5);
+
 // Working with Strings
 
 // let msg = "I love Sheryians";
