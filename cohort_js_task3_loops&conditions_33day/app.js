@@ -123,19 +123,20 @@
 
 // let count = 0;
 
-// let word = "";
-
 // while(true){
 
-//     word = prompt("Enter a word (or type stop to finish): ");
+//     let word = prompt("Enter a word (or type stop to finish): ");
 
-//     if(word.trim().toLowerCase() === "stop"){
+//     if(word === null) break;
+
+//     work = word.trim().toLowerCase();
+
+//     if(word === "stop"){
 //         console.error("user typed stop");
 //         break;
 //     }
-//     else if(word.trim().toLowerCase() === "yes") {
+//     if(word === "yes") {
 //         ++count;
-//         continue;
 //     }
 // }
 
@@ -159,24 +160,20 @@
 
 // 15. Keep asking number until user enters an even number, Use while loop. Stop only if input is even.
 
-// let num = 0;
-
 // while (true) {
-//   num = prompt("Enter a number (if you want to stop, type 'even' number): ");
+//   let num = prompt("Enter a number (if you want to stop, type 'even' number): ");
 //   if (num === null) {
 //     console.error("User cancelled the process.");
 //     break;
 //   }
 //   if (num.trim() === "") {
 //     console.error("You clicked ok without Entering any number");
-//     continue;
 //   }
 
 //   num = parseInt(num);
 
 //   if (isNaN(num)) {
 //     console.error("That's not a number!");
-//     continue;
 //   }
 //   if (num % 2 === 0) break;
 // }
@@ -185,6 +182,8 @@
 
 // let start = +prompt("Enter start number: ");
 // let end = +prompt("Enter end number: ");
+
+// if (start > end) console.error("start number should be smaller then end number!");
 
 // while (start <= end) {
 //     console.log(start);
@@ -197,7 +196,7 @@
 
 // for (let i = 1; i <= 20; i++) {
 //   if (i % 2 !== 0) {
-//       console.log(i);
+//     console.log(i);
 //     oddCount++;
 //     if (oddCount >= 3) {
 //       break;
@@ -209,10 +208,8 @@
 
 // let count = 0;
 
-// let num = 0;
-
 // for (let i = 1; i <= 5; i++) {
-//   num = +prompt("Enter 5 numbers: ");
+//   let num = +prompt("Enter 5 numbers: ");
 
 //   if (num > 0) {
 //     count++;
@@ -223,18 +220,21 @@
 
 // 19. ATM Simulator – Allow 3 withdrawals, Start with ₹1000 balance. Ask withdrawal amount 3 times. If enough balance → deduct, Else → print “Insufficient balance”
 
-// let balance = 1000;
+let balance = 1000;
 
-// let withdrawalAmt = 0;
+for (let i = 1; i <= 3; i++) {
+  let withdrawalAmt = +prompt("Enter withdrawal Amount: ₹");
 
-// for (let i = 1; i <= 3; i++) {
-//   withdrawalAmt = +prompt("Enter withdrawal Amount: ₹");
+  if (withdrawalAmt === 0) {
+    console.error("Invalid Transaction!");
+    continue;
+  } else if (withdrawalAmt <= balance) {
+    alert("Deducted!");
+    balance -= withdrawalAmt;
+  } else {
+    console.error("Insufficient Balance!");
+    break;
+  }
+}
 
-//   if (withdrawalAmt <= balance) {
-//     alert("Deducted!");
-//     balance -= withdrawalAmt;
-//   } else {
-//     console.error("Insufficient Balance!");
-//     break;
-//   }
-// }
+console.log(`Balance: ${balance}`);

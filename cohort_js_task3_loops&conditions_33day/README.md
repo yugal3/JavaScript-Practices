@@ -287,19 +287,20 @@ for (let i = 3; i >= 0; i--) {
 
 let count = 0;
 
-let word = "";
-
 while(true){
     
-    word = prompt("Enter a word (or type stop to finish): ");
+    let word = prompt("Enter a word (or type stop to finish): ");
 
-    if(word.trim().toLowerCase() === "stop"){
+    if(word === null) break;
+
+    work = word.trim().toLowerCase();
+
+    if(word === "stop"){
         console.error("user typed stop");
         break;
     }
-    else if(word.trim().toLowerCase() === "yes") {
+    if(word === "yes") {
         ++count;
-        continue;
     }
 }
 
@@ -357,24 +358,20 @@ console.log(`Sum of 1 to 30 odd number is ${odd}`);
 
 ```js
 //code
-let num = 0;
-
 while (true) {
-  num = prompt("Enter a number (if you want to stop, type 'even' number): ");
+  let num = prompt("Enter a number (if you want to stop, type 'even' number): ");
   if (num === null) {
     console.error("User cancelled the process.");
     break;
   }
   if (num.trim() === "") {
     console.error("You clicked ok without Entering any number");
-    continue;
   }
 
   num = parseInt(num);
 
   if (isNaN(num)) {
     console.error("That's not a number!");
-    continue;
   }
   if (num % 2 === 0) break;
 }
@@ -393,6 +390,8 @@ while (true) {
 //code
 let start = +prompt("Enter start number: ");
 let end = +prompt("Enter end number: ");
+
+if (start > end) console.error("start number should be smaller then end number!");
 
 while (start <= end) {
     console.log(start);
@@ -420,7 +419,7 @@ let oddCount = 0;
 
 for (let i = 1; i <= 20; i++) {
   if (i % 2 !== 0) {
-      console.log(i);
+    console.log(i);
     oddCount++;
     if (oddCount >= 3) {
       break;
@@ -440,10 +439,8 @@ for (let i = 1; i <= 20; i++) {
 //code
 let count = 0;
 
-let num = 0;
-
 for (let i = 1; i <= 5; i++) {
-  num = +prompt("Enter 5 numbers: ");
+  let num = +prompt("Enter 5 numbers: ");
 
   if (num > 0) {
     count++;
@@ -467,19 +464,22 @@ console.log(`You have Entered ${count} time positive number`);
 //code
 let balance = 1000;
 
-let withdrawalAmt = 0;
-
 for (let i = 1; i <= 3; i++) {
-  withdrawalAmt = +prompt("Enter withdrawal Amount: ₹");
+  let withdrawalAmt = +prompt("Enter withdrawal Amount: ₹");
 
-  if (withdrawalAmt <= balance) {
+  if (withdrawalAmt === 0) {
+    console.error("Invalid Transaction!");
+    break;
+  } else if (withdrawalAmt <= balance) {
     alert("Deducted!");
     balance -= withdrawalAmt;
   } else {
-      console.error("Insufficient Balance!");
-      break;
+    console.error("Insufficient Balance!");
+    break;
   }
 }
+
+console.log(`Balance: ${balance}`);
 
 //output
 "Enter withdrawal Amount: ₹500"
@@ -488,4 +488,5 @@ for (let i = 1; i <= 3; i++) {
 "Deducted!"
 "Enter withdrawal Amount: ₹200"
 "Insufficient Balance!"
+"Balance: 0"
 ```
